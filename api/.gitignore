@@ -1,0 +1,15 @@
+# Editors
+.idea/
+.vscode/
+
+# Dependencies
+bower_components/
+node_modules/
+
+# Logs
+yarn*.log*
+npm*.log*
+
+# OS Files
+.DS_Store
+.thumbsdb
