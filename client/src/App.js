@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PhoneListContainer from './components/PhoneListContainer/PhoneListContainer';
+import PhoneDetailComponent from './components/PhoneDetailComponent/PhoneDetailComponent';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	const phones = useSelector(state => state);
+	console.log(phones);
+	return (
+		<div className="App">
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<PhoneListContainer />} />
+					<Route path="/details/:id" element={<PhoneDetailComponent />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
