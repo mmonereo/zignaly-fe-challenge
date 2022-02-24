@@ -10,9 +10,7 @@ export const phonesSlice = createSlice({
 		loading: false,
 		error: null
 	},
-	reducers: {
-
-	},
+	reducers: {},
 	extraReducers(builder){
 		builder
 			.addCase(getPhones.pending, (state) => {

@@ -1,18 +1,37 @@
-import {useParams} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import styles from './PhoneDetailComponent.module.css';
+import {useLocation} from 'react-router-dom';
 
 function PhoneDetailComponent() {
 
-	const phoneId = useParams().id;
+	const {phone} = useLocation().state;
 
-	const phone = useSelector((state) => state.phones.data.find(phone => phone.id === +phoneId));
+	const { name, manufacturer, description, price, color, screen, processor, imageFileName, ram } = phone;
 
 	return (
-		<div className="phone-detail-component">
-			<div className="phone-detail-img">
-				<img src={`phones-img/${phone.imageFileName}`} alt={phone.name} />
+		<div className={styles.details_container}>
+			<div className={styles.details_card}>
+				<div>
+					<h1>{name}</h1>
+					<h2>By {manufacturer}</h2>
+				</div>
+				<div className={styles.details_info}>
+					<div className={styles.details_img}>
+						<img src={`/phones-img/${imageFileName}`} alt={name} />
+					</div>
+					<div className={styles.details_features}>
+						<div className="phone-details-description">
+							<p>{description}</p>
+						</div>
+						<ul>
+							<li> <span>Price:</span> {price}€</li>
+							<li> <span>Color:</span> {color}</li>
+							<li> <span>Screen:</span> {screen}</li>
+							<li> <span>Processor:</span> {processor}</li>
+							<li> <span>RAM:</span> {ram}</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			{phone?.name}
 		</div>
 	);
 }
